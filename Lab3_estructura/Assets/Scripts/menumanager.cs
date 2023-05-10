@@ -2,9 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class menumanager : MonoBehaviour
+public class MenuManager : MonoBehaviour
 { 
-    // Start is called before the first frame update
+    public Canvas menuCanvas;
+    public static MenuManager sharedInstance;
+//ocupamos el game manager y conectar el Menu Manager con el Game Manager 
+    private void Awake()
+    {
+        if(sharedInstance == null){
+            sharedInstance=this;
+        }
+    }
+    public void ShowMainMenu()
+    {
+        menuCanvas.enabled=true;
+    }
+    public void HideMainMenu()
+    {
+        menuCanvas.enabled=false;
+    }
+    public void ExitGame()
+    {
+         #if UNITY_EDITOR 
+            UnityEditor.EditorApplication.isPlaying = false;
+         #else
+            Application.Quit();
+         #endif      
+    }
     void Start()
     {
         
