@@ -135,8 +135,8 @@ GameObject:
   - component: {fileID: 4169060672167810453}
   - component: {fileID: 2323239394411835729}
   m_Layer: 0
-  m_Name: cabeza 1
-  m_TagString: Untagged
+  m_Name: cabeza
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
