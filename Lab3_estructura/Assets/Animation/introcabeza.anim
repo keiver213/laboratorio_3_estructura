@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ahorcado
+  m_Name: introcabeza
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -21,11 +21,19 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: 08b4b052d7631c8439d399c887dbf3bf, type: 3}
+    - time: 0.41428572
+      value: {fileID: 21300000, guid: d28a5f6b0ebc0d4488ca0e870065c3d9, type: 3}
+    - time: 0.85714287
+      value: {fileID: 21300000, guid: 019ba5a06420d704f8e3aa48688af073, type: 3}
+    - time: 1.2571429
+      value: {fileID: 21300000, guid: 0585d41db06330346a72722f8a69acb9, type: 3}
+    - time: 1.7142857
+      value: {fileID: 21300000, guid: b01301796505f0644a86590ad86f107c, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-  m_SampleRate: 15
+  m_SampleRate: 70
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -41,12 +49,16 @@ AnimationClip:
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 21300000, guid: 08b4b052d7631c8439d399c887dbf3bf, type: 3}
+    - {fileID: 21300000, guid: d28a5f6b0ebc0d4488ca0e870065c3d9, type: 3}
+    - {fileID: 21300000, guid: 019ba5a06420d704f8e3aa48688af073, type: 3}
+    - {fileID: 21300000, guid: 0585d41db06330346a72722f8a69acb9, type: 3}
+    - {fileID: 21300000, guid: b01301796505f0644a86590ad86f107c, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.06666667
+    m_StopTime: 1.7285714
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
