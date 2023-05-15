@@ -8,7 +8,7 @@ public class Generator : MonoBehaviour
    
     LinkedList<string> palabras = new LinkedList<string>();
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         palabras.AddLast("buffer");
         palabras.AddLast("campo");
@@ -16,7 +16,7 @@ public class Generator : MonoBehaviour
         palabras.AddLast("Archivo");
         palabras.AddLast("estructura de datos");
         palabras.AddLast("archivos secuenciales");
-        palabras.AddLast("archivos secuanciales indexados");
+        palabras.AddLast("archivos secuenciales indexados");
         palabras.AddLast("listas enlazadas");
         palabras.AddLast("listas doblemente enlazadas");
         palabras.AddLast("listas circulares");
@@ -38,17 +38,21 @@ public class Generator : MonoBehaviour
             if(palabra.Substring(i,1).Equals(" ")){
                 palabraPorCompletar += " ";
             }else{
-                palabraPorCompletar += "_";
+                palabraPorCompletar += "_ ";
             }
         }
         return palabraPorCompletar;
     }
-    public void revelarPalabra(string palabra, string letraDigitada, string palabraResult){
-        for(int i = 0; i < palabra.Length; i++){
-            if(palabra.Substring(i,1).Equals(letraDigitada)){
-                palabraResult = palabraResult.Substring(0,i) + "letraDigitada" + palabraResult.Substring(i+1);
-            }
+    
+    public void revelarPalabra(string palabra, string letraDigitada, ref string palabraResult)
+    {
+    for (int i = 0; i < palabra.Length; i++)
+    {
+        if (palabra.Substring(i, 1).Equals(letraDigitada))
+        {
+            palabraResult = palabraResult.Substring(0, i) + letraDigitada + palabraResult.Substring(i + 1);
         }
+    }
     }
 
 
