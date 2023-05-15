@@ -7,6 +7,7 @@ public class Generator : MonoBehaviour
 {
    
     LinkedList<string> palabras = new LinkedList<string>();
+    public pala palas;
     // Start is called before the first frame update
     public void Start()
     {
@@ -34,30 +35,39 @@ public class Generator : MonoBehaviour
 
     public string alEmpezar(string palabra){
         string palabraPorCompletar = "";
-        for (int i = 0; i < palabra.Length; i++){
-            if(palabra.Substring(i,1).Equals(" ")){
+        for (int i = 0; i < palabra.Length; i++)
+        {
+            if(palabra.Substring(i,1).Equals(" "))
+            {
                 palabraPorCompletar += " ";
-            }else{
-                palabraPorCompletar += "_ ";
+            }
+            else
+            {
+                palabraPorCompletar += "-";
             }
         }
         return palabraPorCompletar;
     }
     
-    public void revelarPalabra(string palabra, string letraDigitada, ref string palabraResult)
+    public void revelarPalabra(string palabra, string letraDigitada,ref string palabraResult)
     {
-    for (int i = 0; i < palabra.Length; i++)
-    {
-        if (palabra.Substring(i, 1).Equals(letraDigitada))
+        bool activacion = false;
+        for (int i = 0; i < palabra.Length; i++)
         {
-            palabraResult = palabraResult.Substring(0, i) + letraDigitada + palabraResult.Substring(i + 1);
+            if (palabra.Substring(i, 1).Equals(letraDigitada))
+            {
+                palabraResult = palabraResult.Substring(0, i) + letraDigitada + palabraResult.Substring(i + 1);
+                activacion = true;
+            }
         }
+            if (activacion == false)
+            {
+                palas.textoerror.enabled = true;
+                palas.errores += 1;
+                Debug.Log("El numero de errores es: " + palas.errores);
+            }
     }
-    }
-
-
-
-    // Update is called once per frame
+    
     void Update()
     {
         

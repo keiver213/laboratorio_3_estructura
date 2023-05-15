@@ -15,7 +15,8 @@ public class pala : MonoBehaviour
     string palabral;
     GameObject slashes;
     string pal;
-    string textitoxd;
+    string[] palabras = new string[29];
+    int contadorcito = 0;
 
     void Start()
     {
@@ -27,12 +28,12 @@ public class pala : MonoBehaviour
         palabral = Generator.palabraAleatoria();
         palabraslash.text = Generator.alEmpezar(palabral);
         pal = Generator.alEmpezar(palabral);
-        textitoxd = textito.text;
     }
 
-    void Update()
+    public void revelar(string palabral, string texto,ref string pal)
     {
-        Generator.revelarPalabra(palabral,textitoxd,ref pal);
+        Debug.Log("Palabral: " + palabral + ",Textito: " + texto + ",pal: " + pal);
+        Generator.revelarPalabra(palabral,texto,ref pal);
         palabraslash.text = pal;
         Debug.Log(pal);
     }
@@ -42,7 +43,37 @@ public class pala : MonoBehaviour
         if (textito.text.Length == 1 && Regex.IsMatch(textito.text, pattern))
         {
             string texto = textito.text;
-            Debug.Log("La palabra ingresada fue: " + texto);
+            Debug.Log("La letra ingresada fue: " + texto);
+            if (contadorcito == 0)
+            {
+                revelar(palabral, texto, ref pal);
+                palabras[contadorcito] = texto;
+                contadorcito += 1;
+            }
+            else
+            {
+                bool palabraRepetida = false;
+                for (int i = 0; i < contadorcito; i++)
+                {
+                    if (palabras[i] == texto)
+                    {
+                        palabraRepetida = true;
+                        break;
+                    }
+                }
+                if (palabraRepetida == true) 
+                {
+                    textoerror.enabled = true;
+                    errores += 1;
+                    Debug.Log("El numero de errores es: " + errores);
+                }
+                else
+                {
+                    revelar(palabral, texto, ref pal);
+                    palabras[contadorcito] = texto;
+                    contadorcito += 1;
+                }
+            }
             textoerror.enabled = false;
         }
         else

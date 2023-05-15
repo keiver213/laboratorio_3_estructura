@@ -33,6 +33,12 @@ public class Cabeza : MonoBehaviour
         {
             animacion.SetBool("error2", false);
             animacion.SetBool("error3", true);
+            #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+            #else
+                Application.Quit();
+            #endif
+
         }
     }
 }
