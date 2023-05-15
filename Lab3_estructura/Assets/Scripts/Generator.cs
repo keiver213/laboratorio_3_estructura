@@ -7,6 +7,7 @@ public class Generator : MonoBehaviour
 {
    
     LinkedList<string> palabras = new LinkedList<string>();
+    LinkedList<string> definiciones = new LinkedList<string>();
     public pala palas;
     // Start is called before the first frame update
     public void Start()
@@ -23,7 +24,18 @@ public class Generator : MonoBehaviour
         palabras.AddLast("listas circulares");
         palabras.AddLast("multilistas");
         palabras.AddLast("nodo");
-
+         definiciones.AddFirst("Un buffer es un espacio de memoria en el cuál se almacena información durante una transferencia de datos. Su principal función es atenuar la diferencia entre dos dispositivos o procesos por lo que está presentes en todo tipo de dispositivos que trabajen con datos de una manera u otra tal cómo discos duros, memoria RAM, procesadores, etc.");
+        definiciones.AddLast("Son los componentes que estructuran un registro.");
+        definiciones.AddLast("Un registro es un dato estructurado, donde cada uno de sus componentes se denomina campo. Los campos de un registro pueden ser todos de diferentes tipos (inclusive otros registros o arreglos)");
+        definiciones.AddLast("Para dar diseño a los archivos se usan los registros: físicamente un archivo se almacena como una sucesión de datos estructurados por el diseño de un registro. La información se guarda con el formato especificado por el registro, y se recupera con ese mismo formato. un conjunto de registros con ciertos aspectos en común, y organizados para algún propósito particular, constituyen un archivo");
+        definiciones.AddLast("son un modo de representar información en una computadora, aunque además, cuentan con un comportamiento interno.");
+        definiciones.AddLast("En archivo secuencial los registros se insertan en el archivo en orden cronológico de llegada al soporte, es decir, un registro se almacena inmediatamente a continuación del registro anterior.");
+        definiciones.AddLast("Se utiliza este tipo de organización de archivo cuando existe la necesidad tanto de accesar los registros secuencialmente, por algún valor de llave, como de accesarlos individualmente.");
+        definiciones.AddLast("Una lista enlazada es una colección lineal de elementos llamados nodos. El orden entre ellos se establece mediante punteros; direcciones o referencias a otros nodos. Esta estructura es dinamica, por lo que no debemos necesariamente conocer su numero de elementos");
+        definiciones.AddLast("Es una estructura de datos dinámica que se compone de un conjunto de nodos en secuencia enlazados mediante dos apuntadores (uno hacia adelante y otro hacia atrás).");
+        definiciones.AddLast("lista lineal en la que el último nodo a punta al primero.");
+        definiciones.AddLast("Una multilista es una estructura de datos jerárquica que consta de una lista principal que contiene sub-listas, cada una de las cuales puede contener sus propias sub-listas y así sucesivamente. ");
+        definiciones.AddLast("construcción en memoria RAM, donde se pueden tener varios datos de tipos diferentes.");
     }
 
     public string palabraAleatoria(){
@@ -68,6 +80,14 @@ public class Generator : MonoBehaviour
             }
     }
     
+        public string obtenerDefinicion(int indice)
+    {
+        LinkedListNode<string> nodo = definiciones.Find(indice.ToString());
+        string definicion = nodo.Value;
+        definiciones.Remove(nodo);
+        return definicion;
+
+    }
     void Update()
     {
         
