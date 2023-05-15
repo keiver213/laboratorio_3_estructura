@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Cabeza : MonoBehaviour
 {
@@ -33,12 +34,7 @@ public class Cabeza : MonoBehaviour
         {
             animacion.SetBool("error2", false);
             animacion.SetBool("error3", true);
-            #if UNITY_EDITOR
-                UnityEditor.EditorApplication.isPlaying = false;
-            #else
-                Application.Quit();
-            #endif
-
+            SceneManager.LoadScene(2);
         }
     }
 }
