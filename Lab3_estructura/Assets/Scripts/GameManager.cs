@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public  GameState currentGameState = GameState.menu;
     public static GameManager sharedInstance;
+    public pala textom;
 
     void Awake(){
         if(sharedInstance==null){

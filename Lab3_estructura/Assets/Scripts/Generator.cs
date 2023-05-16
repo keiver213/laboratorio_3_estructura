@@ -2,20 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Generator : MonoBehaviour
 {
-   
-    LinkedList<string> palabras = new LinkedList<string>();
-    LinkedList<string> definiciones = new LinkedList<string>();
+    public LinkedList<string> palabras = new LinkedList<string>();
+    public LinkedList<string> definiciones = new LinkedList<string>();
     public pala palas;
-    // Start is called before the first frame update
+
     public void Start()
     {
         palabras.AddLast("buffer");
         palabras.AddLast("campo");
         palabras.AddLast("registro");
-        palabras.AddLast("Archivo");
+        palabras.AddLast("archivo");
         palabras.AddLast("estructura de datos");
         palabras.AddLast("archivos secuenciales");
         palabras.AddLast("archivos secuenciales indexados");
@@ -24,7 +24,7 @@ public class Generator : MonoBehaviour
         palabras.AddLast("listas circulares");
         palabras.AddLast("multilistas");
         palabras.AddLast("nodo");
-         definiciones.AddFirst("Un buffer es un espacio de memoria en el cuál se almacena información durante una transferencia de datos. Su principal función es atenuar la diferencia entre dos dispositivos o procesos por lo que está presentes en todo tipo de dispositivos que trabajen con datos de una manera u otra tal cómo discos duros, memoria RAM, procesadores, etc.");
+        definiciones.AddFirst("Un buffer es un espacio de memoria en el cuál se almacena información durante una transferencia de datos. Su principal función es atenuar la diferencia entre dos dispositivos o procesos por lo que está presentes en todo tipo de dispositivos que trabajen con datos de una manera u otra tal cómo discos duros, memoria RAM, procesadores, etc.");
         definiciones.AddLast("Son los componentes que estructuran un registro.");
         definiciones.AddLast("Un registro es un dato estructurado, donde cada uno de sus componentes se denomina campo. Los campos de un registro pueden ser todos de diferentes tipos (inclusive otros registros o arreglos)");
         definiciones.AddLast("Para dar diseño a los archivos se usan los registros: físicamente un archivo se almacena como una sucesión de datos estructurados por el diseño de un registro. La información se guarda con el formato especificado por el registro, y se recupera con ese mismo formato. un conjunto de registros con ciertos aspectos en común, y organizados para algún propósito particular, constituyen un archivo");
@@ -38,9 +38,8 @@ public class Generator : MonoBehaviour
         definiciones.AddLast("construcción en memoria RAM, donde se pueden tener varios datos de tipos diferentes.");
     }
 
-    public string palabraAleatoria(){
-        int controlador = Random.Range(0,palabras.Count);
-        string palabra = palabras.ElementAt(controlador);
+    public string palabraAleatoria(int indice){
+        string palabra = palabras.ElementAt(indice);
         palabras.Remove(palabra);
         return palabra;
     }
@@ -80,14 +79,23 @@ public class Generator : MonoBehaviour
             }
     }
     
-        public string obtenerDefinicion(int indice)
+    public string ObtenerDefinicion(int indice)
     {
-        LinkedListNode<string> nodo = definiciones.Find(indice.ToString());
+        LinkedListNode<string> nodo = definiciones.First;
+        for(int i= 0; i<=indice; i++){
+            nodo = nodo.Next;
+            string cadenatemp= nodo.Value;
+            Debug.Log(cadenatemp);
+        }
         string definicion = nodo.Value;
         definiciones.Remove(nodo);
         return definicion;
+        /*string definicion = nodo.Value;
+        definiciones.Remove(nodo);
+        return definicion;*/
 
     }
+    
     void Update()
     {
         

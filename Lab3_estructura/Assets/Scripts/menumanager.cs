@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 { 
     public Canvas menuCanvas;
+    public Canvas tablero;
     public static MenuManager sharedInstance;
 //ocupamos el game manager y conectar el Menu Manager con el Game Manager 
     private void Awake()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using UnityEngine.SceneManagement;
 
 public class pala : MonoBehaviour
 {
@@ -17,17 +18,29 @@ public class pala : MonoBehaviour
     string pal;
     string[] palabras = new string[29];
     int contadorcito = 0;
+    public Button siguiente;
+    public Button salir;
+    public Text definicionTexto;
+    public GameObject definicion;
 
     void Start()
     {
+        int controlador = Random.Range(0,Generator.palabras.Count);
         slashes = GameObject.FindWithTag("EditorOnly");
         palabraslash = slashes.GetComponent<Text>();
+        definicionTexto = definicion.GetComponent<Text>();
         errores = 0;
         textoerror.enabled = false;
         Generator.Start();
-        palabral = Generator.palabraAleatoria();
+        definicion.gameObject.SetActive(false);
+        palabral = Generator.palabraAleatoria(controlador);
+        //string def = Generator.ObtenerDefinicion(controlador);
+        definicionTexto.text = Generator.ObtenerDefinicion(controlador); 
+        Debug.Log(definicionTexto);
         palabraslash.text = Generator.alEmpezar(palabral);
         pal = Generator.alEmpezar(palabral);
+        siguiente.gameObject.SetActive(false);
+        salir.gameObject.SetActive(false);
     }
 
     public void revelar(string palabral, string texto,ref string pal)
@@ -72,6 +85,12 @@ public class pala : MonoBehaviour
                     revelar(palabral, texto, ref pal);
                     palabras[contadorcito] = texto;
                     contadorcito += 1;
+                    if(palabral==pal){
+                        siguiente.gameObject.SetActive(true);
+                        salir.gameObject.SetActive(true);
+                        palabraslash.gameObject.SetActive(false);
+                        definicion.gameObject.SetActive(true);
+                    }
                 }
             }
             textoerror.enabled = false;
